@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PC構成診断メーカー | 予算・用途からおすすめPCを診断</title>
+
+  <meta
+    name="description"
+    content="予算・用途・解像度を選ぶだけで、自分に合ったPC構成をざっくり診断できる初心者向けのPC構成診断サイトです。"
+  />
+
+  <meta
+    name="keywords"
+    content="PC構成,ゲーミングPC,自作PC,PC診断,おすすめPC,初心者向けPC"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- OGP -->
+<meta property="og:title" content="PC構成診断メーカー" />
+
+<meta
+  property="og:description"
+  content="予算・用途・解像度から、自分に合ったPC構成を診断できる初心者向けサイト"
+/>
+
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content="https://あなたのURL" />
+
+<meta property="og:image" content="https://あなたのURL/ogp.jpg" />
+
+<meta property="og:site_name" content="PC BUILD CHECK" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">PC BUILD <span>CHECK</span></a>
+      <nav class="header-nav">
+        <a href="#diagnosis" class="header-link">診断する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="hero-label">Gaming PC Build Checker</p>
+          <h1 class="hero-title">
+            あなたに合う<br />
+            <span>PC構成を診断</span>
+          </h1>
+          <p class="hero-text">
+            予算・用途・解像度を選ぶだけで、ゲーミングPCや作業用PCのおすすめ構成をざっくり診断できます。
+          </p>
+
+          <div class="hero-actions">
+            <a href="#diagnosis" class="primary-button">診断をはじめる</a>
+            <a href="#about" class="secondary-button">このサイトについて</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <p class="card-label">Sample Result</p>
+          <h2>WQHDゲーミング向け</h2>
+          <ul>
+            <li><span>CPU</span> Ryzen 7 / Core i7クラス</li>
+            <li><span>GPU</span> RTX 5070 / RX 9070クラス</li>
+            <li><span>RAM</span> 32GB</li>
+            <li><span>予算</span> 25万円前後</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<section id="diagnosis" class="diagnosis-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">Build Diagnosis</p>
+      <h2 class="section-title">PC構成診断</h2>
+      <p class="section-text">
+        予算・用途・解像度を選ぶだけで、あなたに合いそうなPC構成をざっくり診断します。
+      </p>
+    </div>
+
+    <form class="diagnosis-form">
+      <div class="form-grid">
+        <label class="form-field">
+          <span>予算</span>
+          <select name="budget">
+            <option value="">選択してください</option>
+            <option value="100000">10万円前後</option>
+            <option value="150000">15万円前後</option>
+            <option value="200000">20万円前後</option>
+            <option value="250000">25万円前後</option>
+            <option value="300000">30万円前後</option>
+          </select>
+        </label>
+
+        <label class="form-field">
+          <span>用途</span>
+          <select name="usage">
+            <option value="">選択してください</option>
+            <option value="fps">FPSゲーム</option>
+            <option value="mmo">MMO・RPG</option>
+            <option value="stream">配信・録画</option>
+            <option value="creative">動画編集・制作</option>
+            <option value="daily">普段使い</option>
+          </select>
+        </label>
+
+        <label class="form-field">
+          <span>解像度</span>
+          <select name="resolution">
+            <option value="">選択してください</option>
+            <option value="fhd">フルHD（一般的な画質） / 1080p</option>
+            <option value="wqhd">WQHD（高画質ゲーミング） / 1440p</option>
+            <option value="4k">4K（超高画質） / 2160p</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="submit" class="diagnosis-button">
+        この条件で診断する
+      </button>
+    </form>
+    <div id="result-area"></div>
+  </div>
+</section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-title">このサイトについて</h2>
+        <p class="section-text">
+  「PC選びが難しい」を少しでも分かりやすくするための
+  PC構成診断サイトです。
+  予算・用途・解像度を選ぶだけで、
+  初心者向けにおすすめ構成をシンプルに診断できます。
+</p>
+      </div>
+    </section>
+  </main>
+<script src="script.js"></script>  
+</body>
+</html>
