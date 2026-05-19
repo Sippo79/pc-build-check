@@ -167,18 +167,18 @@
     "storage": "4TB NVMe SSD",
     "comment": "4K動画編集や重めの制作作業を見据えた構成です。"
   },
-  {
-    "id": 15,
-    "budget": "100000",
-    "usage": "daily",
-    "resolution": "fhd",
-    "title": "普段使い＋軽いゲーム構成",
-    "cpu": "Ryzen 5 5600",
-    "gpu": "GeForce RTX 3050",
-    "ram": "16GB",
-    "storage": "1TB NVMe SSD",
-    "comment": "普段使い中心で、軽めのゲームも少し遊びたい人向けです。"
-  },
+{
+  "id": 15,
+  "budget": "100000",
+  "usage": "daily",
+  "resolution": "wqhd",
+  "title": "WQHD普段使い 入門構成",
+  "cpu": "Ryzen 5 5600",
+  "gpu": "Radeon RX 7600",
+  "ram": "16GB",
+  "storage": "1TB NVMe SSD",
+  "comment": "WQHD環境で動画視聴や軽いゲームを楽しみたい方向けです。"
+},
 {
   "id": 16,
   "budget": "100000",
@@ -529,15 +529,15 @@
 },
 {
   "id": 45,
-  "budget": "200000",
-  "usage": "stream",
+  "budget": "100000",
+  "usage": "daily",
   "resolution": "4k",
-  "title": "4K配信向け バランス構成",
-  "cpu": "Ryzen 9 7900",
-  "gpu": "GeForce RTX 4070 SUPER",
-  "ram": "64GB",
+  "title": "4K普段使い 入門構成",
+  "cpu": "Ryzen 7 7700",
+  "gpu": "GeForce RTX 4060",
+  "ram": "32GB",
   "storage": "2TB NVMe SSD",
-  "comment": "4K録画や高画質配信を快適に行いたい方向けです。"
+  "comment": "4K動画視聴や高解像度デスクトップ環境を快適に使いたい方向けです。"
 },
 {
   "id": 46,
@@ -794,14 +794,14 @@
 {
   "id": 67,
   "budget": "300000",
-  "usage": "stream",
+  "usage": "mmo",
   "resolution": "4k",
-  "title": "4K配信向け 最上位構成",
-  "cpu": "Ryzen 9 7900X",
+  "title": "4K MMO向け 最上位構成",
+  "cpu": "Ryzen 7 7800X3D",
   "gpu": "GeForce RTX 4080 SUPER",
-  "ram": "64GB",
+  "ram": "32GB",
   "storage": "4TB NVMe SSD",
-  "comment": "4Kゲーム・高画質配信・録画を快適に行いたい方向けです。"
+  "comment": "4K環境でMMOやRPGを最高画質で快適に楽しみたい方向けです。"
 },
 {
   "id": 68,
@@ -853,39 +853,39 @@
 },
 {
   "id": 72,
-  "budget": "250000",
-  "usage": "daily",
+  "budget": "150000",
+  "usage": "stream",
   "resolution": "wqhd",
-  "title": "WQHD普段使い 快適上位構成",
+  "title": "WQHD配信向け 快適構成",
   "cpu": "Ryzen 7 7700",
-  "gpu": "GeForce RTX 4070",
+  "gpu": "GeForce RTX 4060 Ti",
   "ram": "32GB",
   "storage": "2TB NVMe SSD",
-  "comment": "WQHD環境で快適性を重視した普段使い向け上位構成です。"
+  "comment": "WQHD環境でゲーム配信や録画を快適に始めたい方向けです。"
 },
 {
   "id": 73,
   "budget": "200000",
-  "usage": "creative",
+  "usage": "fps",
   "resolution": "fhd",
-  "title": "FHD制作向け 快適バランス構成",
-  "cpu": "Ryzen 7 7700",
-  "gpu": "GeForce RTX 4060 Ti 16GB",
-  "ram": "32GB",
-  "storage": "2TB NVMe SSD",
-  "comment": "FHD環境で動画編集や画像編集を快適に行いたい方向けです。"
-},
-{
-  "id": 74,
-  "budget": "200000",
-  "usage": "daily",
-  "resolution": "wqhd",
-  "title": "WQHD普段使い バランス構成",
+  "title": "FHD FPS向け 快適構成",
   "cpu": "Ryzen 7 7700",
   "gpu": "Radeon RX 7700 XT",
   "ram": "32GB",
   "storage": "2TB NVMe SSD",
-  "comment": "WQHD環境で快適に普段使いしたい方向けのバランス構成です。"
+  "comment": "FHD環境で高fpsを狙ってFPSゲームを快適に遊びたい方向けです。"
+},
+{
+  "id": 74,
+  "budget": "200000",
+  "usage": "mmo",
+  "resolution": "fhd",
+  "title": "FHD MMO向け 快適構成",
+  "cpu": "Ryzen 7 7700",
+  "gpu": "Radeon RX 7700 XT",
+  "ram": "32GB",
+  "storage": "2TB NVMe SSD",
+  "comment": "FHD環境でMMOやRPGを快適に長く遊びたい方向けです。"
 },
 {
   "id": 75,
