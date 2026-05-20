@@ -663,3 +663,289 @@ a {
     border-radius: 28px;
   }
 }
+.shop-links {
+  width: min(1480px, calc(100% - 32px));
+  margin: 52px auto 0;
+}
+
+.shop-links h3 {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 32px;
+  padding-bottom: 18px;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.25;
+  text-shadow: 0 0 24px rgba(123, 97, 255, 0.5);
+}
+
+.shop-links h3::before {
+  content: "▰";
+  margin-right: 12px;
+  color: #7b61ff;
+  text-shadow:
+    0 0 14px rgba(123, 97, 255, 0.75),
+    0 0 24px rgba(25, 227, 255, 0.4);
+}
+
+.shop-links h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(100%, 520px);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d946ef, #19e3ff, transparent);
+  box-shadow:
+    0 0 14px rgba(217, 70, 239, 0.65),
+    0 0 22px rgba(25, 227, 255, 0.55);
+}
+
+.shop-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.shop-btn {
+  --shop-accent: #19e3ff;
+  --shop-accent-soft: rgba(25, 227, 255, 0.22);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 500px;
+  padding: 42px;
+  border-radius: 28px;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--shop-accent) 80%, transparent);
+  background:
+    radial-gradient(circle at 34% 21%, var(--shop-accent-soft), transparent 20%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
+    rgba(9, 11, 20, 0.8);
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.38),
+    0 0 32px color-mix(in srgb, var(--shop-accent) 34%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.shop-btn::before {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 34px;
+  width: 46%;
+  height: 58%;
+  border-radius: 18px 18px 8px 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 15% 82%, rgba(255, 255, 255, 0.18)),
+    repeating-linear-gradient(90deg, transparent 0 13px, rgba(255, 255, 255, 0.08) 14px 15px),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.2), rgba(18, 24, 43, 0.72) 34%, rgba(0, 0, 0, 0.88));
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  opacity: 0.74;
+  filter: drop-shadow(-20px 20px 28px rgba(0, 0, 0, 0.5));
+  z-index: -2;
+}
+
+.shop-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.74) 84%),
+    radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--shop-accent) 26%, transparent), transparent 22%),
+    linear-gradient(135deg, color-mix(in srgb, var(--shop-accent) 20%, transparent), transparent 42%);
+  z-index: -1;
+}
+
+.shop-glow-icon {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 106px;
+  height: 106px;
+  border: 4px solid var(--shop-accent);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 900;
+  transform: translateX(-50%);
+  background: rgba(7, 13, 28, 0.42);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--shop-accent) 72%, transparent),
+    inset 0 0 28px color-mix(in srgb, var(--shop-accent) 26%, transparent);
+}
+
+.shop-name {
+  display: flex;
+  align-items: flex-end;
+  min-height: 76px;
+  max-width: 100%;
+  font-size: clamp(25px, 2.15vw, 32px);
+  line-height: 1.18;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+}
+
+.mouse .shop-name {
+  font-size: clamp(24px, 1.9vw, 30px);
+}
+
+.shop-line {
+  width: 44px;
+  height: 3px;
+  margin: 26px 0 22px;
+  border-radius: 999px;
+  background: var(--shop-accent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--shop-accent) 70%, transparent);
+}
+
+.shop-copy {
+  min-height: 64px;
+  color: #e8edf7;
+  font-size: 17px;
+  line-height: 1.85;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.64);
+}
+
+.shop-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+  margin-top: 44px;
+  padding: 0 12px 0 34px;
+  border-radius: 999px;
+  color: var(--shop-accent);
+  font-size: 21px;
+  font-weight: 900;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--shop-accent) 18%, transparent), rgba(255, 255, 255, 0.035));
+  border: 1px solid color-mix(in srgb, var(--shop-accent) 72%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 22px color-mix(in srgb, var(--shop-accent) 18%, transparent);
+}
+
+.shop-cta span {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 34px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.34), transparent 34%),
+    var(--shop-accent);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--shop-accent) 62%, transparent),
+    inset 0 -10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.dospara {
+  --shop-accent: #19ffd2;
+  --shop-accent-soft: rgba(25, 255, 210, 0.24);
+}
+
+.mouse {
+  --shop-accent: #ff4f86;
+  --shop-accent-soft: rgba(255, 79, 134, 0.22);
+}
+
+.koubou {
+  --shop-accent: #3d86ff;
+  --shop-accent-soft: rgba(61, 134, 255, 0.24);
+}
+
+.shop-btn:hover {
+  transform: translateY(-8px);
+  border-color: var(--shop-accent);
+  box-shadow:
+    0 34px 82px rgba(0, 0, 0, 0.46),
+    0 0 42px color-mix(in srgb, var(--shop-accent) 42%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.shop-btn:hover .shop-cta span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1100px) {
+  .shop-buttons {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  .shop-btn {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 800px) {
+  .shop-links {
+    width: min(100% - 24px, 620px);
+    margin-top: 44px;
+  }
+
+  .shop-links h3 {
+    margin-bottom: 24px;
+  }
+
+  .shop-btn {
+    min-height: 420px;
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .shop-btn::before {
+    right: -24px;
+    width: 52%;
+    height: 48%;
+  }
+
+  .shop-glow-icon {
+    top: 34px;
+    width: 86px;
+    height: 86px;
+    font-size: 26px;
+  }
+
+  .shop-name {
+    min-height: 62px;
+    font-size: 26px;
+  }
+
+  .mouse .shop-name {
+    font-size: 25px;
+  }
+
+  .shop-copy {
+    min-height: auto;
+    font-size: 16px;
+  }
+
+  .shop-cta {
+    min-height: 62px;
+    margin-top: 26px;
+    padding-left: 26px;
+    font-size: 19px;
+  }
+
+  .shop-cta span {
+    width: 50px;
+    height: 50px;
+    font-size: 29px;
+  }
+}
+
