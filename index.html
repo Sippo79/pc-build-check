@@ -27,8 +27,23 @@
   <meta property="og:image" content="https://Sippo79.github.io/pc-build-check/ogp.jpg" />
   <meta property="og:site_name" content="PC BUILD CHECK" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+  <link rel="manifest" href="./site.webmanifest">
+
+  <meta name="theme-color" content="#0b1020">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google-site-verification" content="iEArXLgT91h_EASB76ODMIgekaYdL2hvQMA-KuQCTS0" />
+  <link rel="canonical" href="https://sippo79.github.io/pc-build-check/" />
+  <meta name="twitter:site" content="@Sippo79" />
+  <meta name="twitter:title" content="予算別おすすめゲーミングPC | PC BUILD CHECK" />
+  <meta name="twitter:description" content="予算・用途・解像度を選ぶだけで、自分に合うゲーミングPC構成を診断。初心者でも分かりやすく、FPSや配信・動画編集向けのPC選びをサポートします。" />
+  <meta name="twitter:image" content="https://sippo79.github.io/pc-build-check/ogp.jpg" />
 </head>
 <body>
   <header class="site-header">
@@ -83,39 +98,44 @@
           </p>
         </div>
 
+        <div class="form-hint">
+          <span class="form-hint-icon">💡</span>
+          <span>迷ったら <strong>「15万円前後・FPSゲーム・フルHD」</strong> から試してみてください</span>
+        </div>
+
         <form class="diagnosis-form">
           <div class="form-grid">
             <label class="form-field">
-              <span>予算</span>
+              <span>予算 <small class="field-note">目安の合計金額</small></span>
               <select name="budget">
                 <option value="">選択してください</option>
-                <option value="100000">10万円前後</option>
-                <option value="150000">15万円前後</option>
-                <option value="200000">20万円前後</option>
-                <option value="250000">25万円前後</option>
-                <option value="300000">30万円前後</option>
+                <option value="100000">10万円前後（入門・最低限）</option>
+                <option value="150000">15万円前後（コスパ重視）★人気</option>
+                <option value="200000">20万円前後（快適ゲーミング）</option>
+                <option value="250000">25万円前後（ハイスペック）</option>
+                <option value="300000">30万円前後（最上位クラス）</option>
               </select>
             </label>
 
             <label class="form-field">
-              <span>用途</span>
+              <span>用途 <small class="field-note">メインの使い方</small></span>
               <select name="usage">
                 <option value="">選択してください</option>
-                <option value="fps">FPSゲーム</option>
-                <option value="mmo">MMO・RPG</option>
-                <option value="stream">配信・録画</option>
+                <option value="fps">FPSゲーム（Apex・VALORANT等）</option>
+                <option value="mmo">MMO・RPG（FF14・原神等）</option>
+                <option value="stream">配信・録画（ゲーム実況等）</option>
                 <option value="creative">動画編集・制作</option>
-                <option value="daily">普段使い</option>
+                <option value="daily">普段使い・軽めのゲーム ★初心者におすすめ</option>
               </select>
             </label>
 
             <label class="form-field">
-              <span>解像度</span>
+              <span>解像度 <small class="field-note">モニターの画質</small></span>
               <select name="resolution">
                 <option value="">選択してください</option>
-                <option value="fhd">フルHD / 1080p</option>
-                <option value="wqhd">WQHD / 1440p</option>
-                <option value="4k">4K / 2160p</option>
+                <option value="fhd">フルHD / 1080p ★定番・コスパ最高</option>
+                <option value="wqhd">WQHD / 1440p（高精細）</option>
+                <option value="4k">4K / 2160p（最高画質）</option>
               </select>
             </label>
           </div>
@@ -172,6 +192,10 @@
             <article class="popular-build-card">
               <div class="popular-rank">1位</div>
               <div class="popular-build-body">
+                <div class="build-badges">
+                  <span class="build-badge badge-popular">人気No.1</span>
+                  <span class="build-badge badge-fps">FPS重視</span>
+                </div>
                 <h3>WQHD FPSゲーム向け ハイスペック構成</h3>
                 <dl class="popular-build-specs">
                   <div>
@@ -198,6 +222,10 @@
             <article class="popular-build-card">
               <div class="popular-rank">2位</div>
               <div class="popular-build-body">
+                <div class="build-badges">
+                  <span class="build-badge badge-cospa">コスパ重視</span>
+                  <span class="build-badge badge-beginner">初心者向け</span>
+                </div>
                 <h3>FHD 配信・録画向け 快適構成</h3>
                 <dl class="popular-build-specs">
                   <div>
@@ -224,6 +252,10 @@
             <article class="popular-build-card">
               <div class="popular-rank">3位</div>
               <div class="popular-build-body">
+                <div class="build-badges">
+                  <span class="build-badge badge-creative">クリエイター向け</span>
+                  <span class="build-badge badge-longrun">長く使える</span>
+                </div>
                 <h3>WQHD 動画編集・制作向け ハイスペック構成</h3>
                 <dl class="popular-build-specs">
                   <div>

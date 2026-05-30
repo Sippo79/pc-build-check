@@ -182,10 +182,86 @@ const defaultPerformanceProfile = {
 };
 
 const gameLabels = {
-  apex: "Apex",
+  apex: "Apex Legends",
   valorant: "VALORANT",
   fortnite: "Fortnite",
   minecraft: "Minecraft",
+};
+
+const friendlyCapabilities = {
+  "FHDゲーム向き": "フルHDゲームを快適にプレイ",
+  "軽めの動画編集OK": "簡単な動画編集も対応",
+  "普段使い快適": "ネット・動画・作業も快適",
+  "FHD 144fpsゲーム可能": "フルHDで高フレームレート達成",
+  "WQHD入門": "高精細モニターにも対応可",
+  "動画編集OK": "動画編集ソフトも動かせる",
+  "FHD 144fpsゲーム可能": "フルHDで滑らか144fps達成",
+  "WQHD快適": "1440p高精細でも快適にプレイ",
+  "配信可能": "ゲーム配信・録画にも対応",
+  "FHD 240fpsクラス": "フルHDで超滑らか240fps達成",
+  "4K入門": "4K高解像度ゲームも体験可能",
+  "FHD 240fps以上": "フルHDで最高クラスのfps",
+  "WQHD高fps快適": "1440pで高フレームレートを維持",
+  "4Kゲーム可能": "4K解像度のゲームを快適にプレイ",
+  "FHDゲーム可能": "フルHDゲームを問題なく動かせる",
+  "普段使い快適": "ネット・動画・日常作業を快適にこなせる",
+  "軽めの制作作業OK": "写真編集・軽い動画処理も対応",
+};
+
+const usageComfortMessages = {
+  fps: {
+    fhd: "Apex LegendsやVALORANTを高フレームレートで快適にプレイできます。フルHDモニターとの組み合わせでコスパ最高の環境が作れます。",
+    wqhd: "1440p高精細モニターでFPSを快適に楽しめます。敵が見やすく、視認性と美しさを両立できます。",
+    "4k": "4K解像度でFPSゲームを楽しめます。フレームレートより高画質を重視したい方向けです。",
+  },
+  mmo: {
+    fhd: "FF14や原神などのMMO・RPGを美しい画質でゆったり楽しめます。長時間プレイでも疲れにくい安定した動作が期待できます。",
+    wqhd: "1440pの高精細画面でMMO・RPGの世界観をより豊かに楽しめます。広いUIが表示できて操作性も向上します。",
+    "4k": "4K解像度でMMOやRPGの美麗なグラフィックを最高画質で堪能できます。",
+  },
+  stream: {
+    fhd: "ゲームをプレイしながら同時に配信・録画ができます。視聴者に安定した映像を届けられる構成です。",
+    wqhd: "1440p高画質でのゲームプレイと配信を両立できます。配信クオリティも向上します。",
+    "4k": "高解像度でのゲーム配信・録画に対応できます。本格的な配信環境を構築したい方向けです。",
+  },
+  creative: {
+    fhd: "Premiere ProやDaVinci Resolveなどの動画編集ソフトを快適に動かせます。編集作業の待ち時間を短縮できます。",
+    wqhd: "動画編集の広い作業画面を活かせる構成です。タイムラインが見やすく、制作効率が上がります。",
+    "4k": "4K動画素材の編集・書き出しもこなせるクリエイター向けの高性能構成です。",
+  },
+  daily: {
+    fhd: "ネット閲覧・動画視聴・テレワークはもちろん、軽めのゲームまでストレスなく動かせます。",
+    wqhd: "1440pの広い画面で作業・動画・ゲームを快適に楽しめます。普段使いには十分すぎる性能です。",
+    "4k": "4K動画の視聴や高精細な作業環境を手軽に実現できます。マルチタスクも余裕でこなせます。",
+  },
+};
+
+const whyThisBuildMessages = {
+  fps: {
+    fhd: (gpu) => `FPSゲームで重要なのはフレームレートです。${gpu}はフルHD解像度でのフレームレートが高く、Apex LegendsやVALORANTで高fpsを出しやすいGPUです。3Dキャッシュ付きCPUとの組み合わせでゲーム性能をさらに引き出しています。`,
+    wqhd: (gpu) => `WQHDはフルHDより高精細で、FPSの視認性が向上します。${gpu}はWQHD解像度でも十分なフレームレートを維持できるため、高画質と高fpsを両立したい方に適した構成です。`,
+    "4k": (gpu) => `4K解像度でのFPSは非常に高いGPU性能が必要です。${gpu}はその要求に応えられる最上位クラスのGPUです。画質を最優先にしたい方向けの構成です。`,
+  },
+  mmo: {
+    fhd: (gpu) => `MMO・RPGはフレームレートよりも安定した動作と美しいグラフィックが重要です。${gpu}はフルHDでの安定動作に優れており、長時間プレイでも快適な環境を維持できます。`,
+    wqhd: (gpu) => `WQHDモニターはMMO・RPGのUI表示領域が広がり、情報管理がしやすくなります。${gpu}はWQHDでの安定動作に適しており、高精細なグラフィックも楽しめます。`,
+    "4k": (gpu) => `4K解像度はMMO・RPGの美しい世界観を最大限に引き出します。${gpu}は4Kでも高画質設定での動作を実現できる性能を持っています。`,
+  },
+  stream: {
+    fhd: (gpu) => `配信・録画にはCPUの処理性能が特に重要です。このCPU・GPU構成はゲームプレイと配信エンコードを同時にこなせるよう選定しています。RTX系GPUはNVIDIAのNVENCエンコーダーが使えるため、CPU負荷を抑えた高品質配信が可能です。`,
+    wqhd: (gpu) => `WQHD環境での配信は高画質映像を視聴者に届けやすくなります。${gpu}のハードウェアエンコーダーにより、ゲームの動作を妨げずに高品質な配信ができます。`,
+    "4k": (gpu) => `4K配信・録画には最高クラスのCPUとGPU性能が求められます。この構成はその要求を満たしており、将来の配信スタイルの変化にも対応できる余裕があります。`,
+  },
+  creative: {
+    fhd: (gpu) => `動画編集ではCPUのコア数とメモリ容量が重要です。このCPUは多コア設計で、${gpu}のGPUアクセラレーションと組み合わせることで、書き出し速度を大幅に向上させられます。`,
+    wqhd: (gpu) => `WQHD環境は動画編集の作業スペースが広がり、タイムラインの視認性が向上します。${gpu}はGPUエンコードに対応しており、Premiere ProやDaVinci Resolveでの書き出しを高速化できます。`,
+    "4k": (gpu) => `4K動画の編集・書き出しには高いCPU性能・メモリ・GPU性能が必要です。この構成はすべての要件を満たしており、4Kクリエイター向けのバランスの取れた構成です。`,
+  },
+  daily: {
+    fhd: (gpu) => `普段使い・軽めのゲームには過剰なスペックは不要です。この構成は必要十分な性能をコスパ良く実現しており、ネット・動画・テレワーク・軽いゲームまで快適にこなせます。`,
+    wqhd: (gpu) => `WQHD環境は普段使いでも広い作業スペースが得られ、マルチタスクが快適になります。この構成はその環境を実現しつつ、軽いゲームも十分楽しめる余裕があります。`,
+    "4k": (gpu) => `4Kモニターで動画視聴や資料作成を行うとその鮮明さに驚くはずです。この構成は4K表示を快適にこなせる性能を持ちながら、普段使いでも無駄がありません。`,
+  },
 };
 
 let builds = [];
@@ -282,8 +358,55 @@ function renderFpsItems(fpsByGame) {
 
 function renderCapabilityItems(capabilities) {
   return capabilities
-    .map((capability) => `<li>${capability}</li>`)
+    .map((capability) => {
+      const friendly = friendlyCapabilities[capability] || capability;
+      return `<li title="${capability}">${friendly}</li>`;
+    })
     .join("");
+}
+
+function getWhyMessage(usage, resolution, gpu) {
+  const usageMap = whyThisBuildMessages[usage];
+  if (!usageMap) return null;
+  const fn = usageMap[resolution] || usageMap.fhd;
+  return fn ? fn(gpu) : null;
+}
+
+function getComfortMessage(usage, resolution) {
+  const usageMap = usageComfortMessages[usage];
+  if (!usageMap) return null;
+  return usageMap[resolution] || usageMap.fhd || null;
+}
+
+function renderNextActions(gpuGuideUrl) {
+  return `
+    <div class="next-action-section">
+      <p class="next-action-label">次のステップ</p>
+      <div class="next-action-grid">
+        <a class="next-action-btn" href="${gpuGuideUrl}" target="_blank" rel="noopener">
+          <span class="next-action-icon">🔍</span>
+          <span class="next-action-text">
+            <strong>GPU詳細を見る</strong>
+            <small>グラボの性能・比較情報</small>
+          </span>
+        </a>
+        <a class="next-action-btn" href="https://sippo79.github.io/game-pc-guide/" target="_blank" rel="noopener">
+          <span class="next-action-icon">🎮</span>
+          <span class="next-action-text">
+            <strong>ゲーム別おすすめPCを見る</strong>
+            <small>遊びたいゲームから逆引き</small>
+          </span>
+        </a>
+        <a class="next-action-btn" href="#popular-builds" id="next-action-popular">
+          <span class="next-action-icon">🏆</span>
+          <span class="next-action-text">
+            <strong>人気構成ランキングを見る</strong>
+            <small>みんなが選ぶ定番構成</small>
+          </span>
+        </a>
+      </div>
+    </div>
+  `;
 }
 
 async function loadBuilds() {
@@ -349,6 +472,9 @@ form.addEventListener("submit", (e) => {
   const gpuGuideUrl = createGpuGuideUrl(result.gpu);
   updateAffiliateLinksForBuild(result);
 
+  const whyMessage = getWhyMessage(usage, resolution, result.gpu);
+  const comfortMessage = getComfortMessage(usage, resolution);
+
   resultArea.innerHTML = `
     <div class="result-card">
       <p class="result-label">Diagnosis Result</p>
@@ -357,14 +483,25 @@ form.addEventListener("submit", (e) => {
 
       <ul class="result-specs">
         <li><span>CPU</span>${result.cpu}</li>
-        <li><span>GPU</span>${result.gpu}</li>
-        <li><span>RAM</span>${result.ram}</li>
-        <li><span>Storage</span>${result.storage}</li>
+        <li><span>GPU（グラボ）</span>${result.gpu}</li>
+        <li><span>メモリ</span>${result.ram}</li>
+        <li><span>ストレージ</span>${result.storage}</li>
       </ul>
 
-      <p class="result-comment">
-        ${result.comment}
-      </p>
+      ${comfortMessage ? `
+      <div class="comfort-message">
+        <span class="comfort-icon">✅</span>
+        <p>${comfortMessage}</p>
+      </div>` : ''}
+
+      ${whyMessage ? `
+      <section class="why-panel">
+        <div class="why-panel-heading">
+          <p class="result-label">Why This Build</p>
+          <h4>なぜこの構成？</h4>
+        </div>
+        <p class="why-text">${whyMessage}</p>
+      </section>` : ''}
 
       <div class="result-insights">
         <div class="result-metrics">
@@ -402,11 +539,21 @@ form.addEventListener("submit", (e) => {
         </section>
 
         <a class="gpu-detail-button" href="${gpuGuideUrl}" target="_blank" rel="noopener">
-          GPU詳細ページを見る
+          グラボの詳細スペックを見る →
         </a>
       </div>
+
+      ${renderNextActions(gpuGuideUrl)}
     </div>
   `;
 
   toggleAffiliateSection(true);
+
+  const nextActionPopular = document.querySelector("#next-action-popular");
+  if (nextActionPopular) {
+    nextActionPopular.addEventListener("click", (e) => {
+      e.preventDefault();
+      popularBuildsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 });

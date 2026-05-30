@@ -1,0 +1,14 @@
+{
+  "name": "PC GUIDE",
+  "short_name": "PC GUIDE",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "icons": [
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
