@@ -1,19 +1,77 @@
+/* =========================
+   Design Tokens (Brand Variables)
+   共通カラー変数 — GPU GUIDE / PC BUILD CHECK / GAME PC GUIDE 共通
+========================= */
+
+:root {
+  /* Brand Colors */
+  --color-cyan: #19e3ff;
+  --color-purple: #7b61ff;
+  --color-cyan-glow: rgba(25, 227, 255, 0.18);
+  --color-purple-glow: rgba(123, 97, 255, 0.18);
+
+  /* Background */
+  --color-bg: #090b14;
+  --color-bg-surface: rgba(255, 255, 255, 0.04);
+  --color-bg-card: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  --color-bg-overlay: rgba(9, 11, 20, 0.82);
+
+  /* Text */
+  --color-text: #f5f7fb;
+  --color-text-muted: #cfd6e6;
+  --color-text-dim: #9aa7bd;
+
+  /* Border */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-cyan: rgba(25, 227, 255, 0.22);
+
+  /* Safe Area (iOS notch / home indicator) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Radius */
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+}
+
+/* =========================
+   Reset & Base
+========================= */
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #f5f7fb;
+  color: var(--color-text);
   background:
-    radial-gradient(circle at top left, rgba(25, 227, 255, 0.18), transparent 34%),
-    radial-gradient(circle at bottom right, rgba(123, 97, 255, 0.18), transparent 34%),
-    #090b14;
+    radial-gradient(circle at top left, var(--color-cyan-glow), transparent 34%),
+    radial-gradient(circle at bottom right, var(--color-purple-glow), transparent 34%),
+    var(--color-bg);
+  overscroll-behavior-y: none;
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+button,
+a,
+select,
+label,
+[role="button"] {
+  touch-action: manipulation;
 }
 
 a {
@@ -30,13 +88,15 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(9, 11, 20, 0.82);
+  background: var(--color-bg-overlay);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--safe-top);
 }
 
 .header-inner {
-  height: 68px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1653,5 +1713,239 @@ a {
     height: 50px;
     font-size: 29px;
   }
+}
+
+/* =========================
+   Footer (safe-area対応)
+========================= */
+
+.site-footer {
+  padding: 24px 0;
+  padding-bottom: max(var(--safe-bottom), 24px);
+  text-align: center;
+  color: var(--color-text-dim);
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =========================
+   Skeleton UI (ローディング中のプレースホルダー)
+========================= */
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--color-border);
+}
+
+.skeleton-line {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 75%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+}
+
+.skeleton-title {
+  height: 28px;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.skeleton-spec {
+  height: 16px;
+  margin-bottom: 14px;
+}
+
+.skeleton-spec:nth-child(2) { width: 85%; }
+.skeleton-spec:nth-child(3) { width: 75%; }
+.skeleton-spec:nth-child(4) { width: 80%; }
+.skeleton-spec:nth-child(5) { width: 60%; }
+
+.skeleton-comment {
+  height: 14px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  width: 90%;
+}
+
+/* =========================
+   Loading Spinner (診断ボタン押下後)
+========================= */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* =========================
+   PWA Install Prompt Banner
+========================= */
+
+.install-prompt {
+  position: fixed;
+  bottom: max(var(--safe-bottom), 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(480px, calc(100% - 32px));
+  padding: 16px 18px;
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(25, 227, 255, 0.12), rgba(123, 97, 255, 0.18)),
+    rgba(9, 11, 20, 0.94);
+  border: 1px solid rgba(25, 227, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(25, 227, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.install-prompt.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.install-prompt-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.install-prompt-text {
+  flex: 1;
+}
+
+.install-prompt-text strong {
+  display: block;
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.install-prompt-text small {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.install-prompt-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.install-btn-yes {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.install-btn-no {
+  padding: 8px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* =========================
+   Page Transition (アプリ感)
+========================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card,
+.affiliate-section {
+  animation: fade-up 0.35s ease both;
+}
+
+/* =========================
+   Mobile Hero Simplification
+========================= */
+
+@media (max-width: 800px) {
+  .hero-card {
+    display: none;
+  }
+
+  .hero {
+    padding: 36px 0 44px;
+  }
+
+  .hero-title {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .tertiary-button {
+    display: none;
+  }
+}
+
+/* =========================
+   Scroll UX
+========================= */
+
+.diagnosis-section,
+.about-section,
+.related-sites-section {
+  scroll-margin-top: 72px;
+}
+
+#result-area {
+  scroll-margin-top: 80px;
 }
 

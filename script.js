@@ -409,9 +409,77 @@ function renderNextActions(gpuGuideUrl) {
   `;
 }
 
+const diagnosisButton = document.querySelector("#diagnosis-button");
+
+function showSkeleton() {
+  resultArea.innerHTML = `
+    <div class="skeleton-card">
+      <div class="skeleton-line skeleton-title"></div>
+      <div class="skeleton-line skeleton-spec"></div>
+      <div class="skeleton-line skeleton-spec"></div>
+      <div class="skeleton-line skeleton-spec"></div>
+      <div class="skeleton-line skeleton-spec"></div>
+      <div class="skeleton-line skeleton-comment"></div>
+    </div>
+  `;
+}
+
+function setButtonLoading(isLoading) {
+  if (!diagnosisButton) return;
+  if (isLoading) {
+    diagnosisButton.classList.add("btn-loading");
+    diagnosisButton.textContent = "診断中...";
+  } else {
+    diagnosisButton.classList.remove("btn-loading");
+    diagnosisButton.textContent = "この条件で診断する";
+  }
+}
+
 async function loadBuilds() {
-  const response = await fetch("builds.json");
-  builds = await response.json();
+  try {
+    const response = await fetch("builds.json");
+    builds = await response.json();
+  } catch {
+    builds = [];
+  }
+}
+
+/* =========================
+   PWA Install Prompt
+========================= */
+
+let deferredInstallPrompt = null;
+const installPromptEl = document.querySelector("#install-prompt");
+const installBtnYes = document.querySelector("#install-btn-yes");
+const installBtnNo = document.querySelector("#install-btn-no");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+
+  const dismissed = sessionStorage.getItem("install-prompt-dismissed");
+  if (!dismissed && installPromptEl) {
+    setTimeout(() => {
+      installPromptEl.classList.add("visible");
+    }, 3000);
+  }
+});
+
+if (installBtnYes) {
+  installBtnYes.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    const { outcome } = await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    installPromptEl.classList.remove("visible");
+  });
+}
+
+if (installBtnNo) {
+  installBtnNo.addEventListener("click", () => {
+    installPromptEl.classList.remove("visible");
+    sessionStorage.setItem("install-prompt-dismissed", "1");
+  });
 }
 
 setupAffiliateLinks();
@@ -425,7 +493,7 @@ popularJumpButton.addEventListener("click", () => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const budget = form.budget.value;
@@ -441,6 +509,16 @@ form.addEventListener("submit", (e) => {
     toggleAffiliateSection(false);
     return;
   }
+
+  setButtonLoading(true);
+
+  if (builds.length === 0) {
+    showSkeleton();
+    resultArea.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    await loadBuilds();
+  }
+
+  setButtonLoading(false);
 
   const result = builds.find((build) => {
     return (
@@ -548,6 +626,8 @@ form.addEventListener("submit", (e) => {
   `;
 
   toggleAffiliateSection(true);
+
+  resultArea.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
   const nextActionPopular = document.querySelector("#next-action-popular");
   if (nextActionPopular) {

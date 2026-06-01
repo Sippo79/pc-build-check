@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <title>予算別おすすめゲーミングPC | 初心者向けPC選びサイト</title>
 
@@ -10,40 +10,56 @@
     name="description"
     content="予算・用途・解像度から初心者にも分かりやすくおすすめゲーミングPC構成を診断。FPS、MMO、配信、動画編集向けのPC選びをサポートします。"
   />
+  <meta name="keywords" content="PC構成,ゲーミングPC,自作PC,PC診断,おすすめPC,初心者向けPC" />
 
-  <meta
-    name="keywords"
-    content="PC構成,ゲーミングPC,自作PC,PC診断,おすすめPC,初心者向けPC"
-  />
+  <!-- Preload critical resources -->
+  <link rel="preload" href="./style.css" as="style" />
+  <link rel="preload" href="./script.js" as="script" />
+  <link rel="preload" href="./builds.json" as="fetch" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- OGP -->
   <meta property="og:title" content="予算別おすすめゲーミングPC | PC BUILD CHECK" />
-  <meta
-    property="og:description"
-    content="予算・用途・解像度から初心者にも分かりやすくおすすめゲーミングPC構成を診断します。"
-  />
+  <meta property="og:description" content="予算・用途・解像度から初心者にも分かりやすくおすすめゲーミングPC構成を診断します。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://Sippo79.github.io/pc-build-check/" />
-  <meta property="og:image" content="https://Sippo79.github.io/pc-build-check/ogp.jpg" />
+  <meta property="og:url" content="https://sippo79.github.io/pc-build-check/" />
+  <meta property="og:image" content="https://sippo79.github.io/pc-build-check/ogp.jpg" />
   <meta property="og:site_name" content="PC BUILD CHECK" />
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-
-  <link rel="manifest" href="./site.webmanifest">
-
-  <meta name="theme-color" content="#0b1020">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google-site-verification" content="iEArXLgT91h_EASB76ODMIgekaYdL2hvQMA-KuQCTS0" />
-  <link rel="canonical" href="https://sippo79.github.io/pc-build-check/" />
   <meta name="twitter:site" content="@Sippo79" />
   <meta name="twitter:title" content="予算別おすすめゲーミングPC | PC BUILD CHECK" />
   <meta name="twitter:description" content="予算・用途・解像度を選ぶだけで、自分に合うゲーミングPC構成を診断。初心者でも分かりやすく、FPSや配信・動画編集向けのPC選びをサポートします。" />
   <meta name="twitter:image" content="https://sippo79.github.io/pc-build-check/ogp.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+
+  <!-- PWA / iOS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <meta name="theme-color" content="#090b14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="PC CHECK" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://sippo79.github.io/pc-build-check/" />
+  <meta name="google-site-verification" content="iEArXLgT91h_EASB76ODMIgekaYdL2hvQMA-KuQCTS0" />
+
+  <!-- Service Worker 登録 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -81,7 +97,7 @@
           <ul>
             <li><span>CPU</span> Ryzen 7 / Core i7クラス</li>
             <li><span>GPU</span> RTX 4070 / RX 7800 XTクラス</li>
-            <li><span>RAM</span> 32GB</li>
+            <li><span>メモリ</span> 32GB</li>
             <li><span>予算</span> 25万円前後</li>
           </ul>
         </div>
@@ -140,7 +156,7 @@
             </label>
           </div>
 
-          <button type="submit" class="diagnosis-button">
+          <button type="submit" class="diagnosis-button" id="diagnosis-button">
             この条件で診断する
           </button>
         </form>
@@ -211,7 +227,7 @@
                     <dd>Ryzen 7 7800X3D</dd>
                   </div>
                   <div>
-                    <dt>GPU</dt>
+                    <dt>GPU（グラボ）</dt>
                     <dd>GeForce RTX 4070 SUPER</dd>
                   </div>
                 </dl>
@@ -241,7 +257,7 @@
                     <dd>Ryzen 7 7700</dd>
                   </div>
                   <div>
-                    <dt>GPU</dt>
+                    <dt>GPU（グラボ）</dt>
                     <dd>GeForce RTX 4060</dd>
                   </div>
                 </dl>
@@ -271,7 +287,7 @@
                     <dd>Ryzen 9 7900</dd>
                   </div>
                   <div>
-                    <dt>GPU</dt>
+                    <dt>GPU（グラボ）</dt>
                     <dd>GeForce RTX 4070 SUPER</dd>
                   </div>
                 </dl>
@@ -347,7 +363,7 @@
           <a href="https://sippo79.github.io/gpu-guide/" class="related-site-button">
             <span class="related-site-mini">GPU GUIDE</span>
             <span>GPU性能比較</span>
-            <small>グラボの性能・VRAM・用途を比較</small>
+            <small>グラボの性能・メモリ容量・用途を比較</small>
           </a>
         </div>
       </div>
@@ -359,6 +375,19 @@
       <p>&copy; 2026 PC BUILD CHECK</p>
     </div>
   </footer>
+
+  <!-- PWA Install Prompt -->
+  <div id="install-prompt" class="install-prompt" role="dialog" aria-label="アプリとして追加">
+    <span class="install-prompt-icon">📱</span>
+    <div class="install-prompt-text">
+      <strong>ホーム画面に追加</strong>
+      <small>アプリのように素早く使えます</small>
+    </div>
+    <div class="install-prompt-actions">
+      <button class="install-btn-yes" id="install-btn-yes">追加</button>
+      <button class="install-btn-no" id="install-btn-no">後で</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
