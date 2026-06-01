@@ -847,6 +847,20 @@ a {
   line-height: 1.7;
 }
 
+.popular-detail-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  color: #19e3ff;
+  font-size: 13px;
+  font-weight: 800;
+  transition: opacity 0.2s ease;
+}
+
+.popular-detail-link:hover {
+  opacity: 0.75;
+}
+
 /* =========================
    About Section
 ========================= */

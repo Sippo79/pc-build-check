@@ -38,11 +38,13 @@ const gpuAffiliateLinks = [
   {
     match: ["rtx 4060 ti"],
     amazon: "https://amzn.to/49wDhoR",
+    rakuten: "https://a.r10.to/hPZffm",
   },
   {
     match: ["rtx 4060"],
     exclude: ["rtx 4060 ti"],
     amazon: "https://amzn.to/4wYIVdm",
+    rakuten: "https://a.r10.to/hPgdeX",
   },
   {
     match: ["rtx 4070"],
@@ -52,11 +54,13 @@ const gpuAffiliateLinks = [
   {
     match: ["rtx 4070 super"],
     amazon: "https://amzn.to/4nTl5vy",
+    rakuten: "https://a.r10.to/hPZfxv",
   },
   {
     match: ["rtx 4080"],
     exclude: ["rtx 4080 super"],
     amazon: "https://amzn.to/4dDK7vf",
+    rakuten: "https://a.r10.to/hRijvW",
   },
   {
     match: ["rtx 4080 super"],
@@ -66,23 +70,32 @@ const gpuAffiliateLinks = [
     match: ["rtx 5060"],
     exclude: ["rtx 5060 ti"],
     amazon: "https://amzn.to/42YIO41",
+    rakuten: "https://a.r10.to/hk5Kq2",
   },
   {
     match: ["rtx 5060 ti"],
     amazon: "https://amzn.to/4wXYAtA",
+    rakuten: "https://a.r10.to/hYQ01W",
   },
   {
     match: ["rtx 5070"],
     exclude: ["rtx 5070 ti"],
     amazon: "https://amzn.to/49u0cRO",
+    rakuten: "https://a.r10.to/hkKZsl",
   },
   {
     match: ["rtx 5070 ti"],
     amazon: "https://amzn.to/4wTXy1G",
+    rakuten: "https://a.r10.to/hgOCmU",
   },
   {
     match: ["rtx 5080"],
     amazon: "https://amzn.to/4uJYm7S",
+    rakuten: "https://a.r10.to/hgP6kS",
+  },
+  {
+    match: ["rtx 5090"],
+    rakuten: "https://a.r10.to/hYATKB",
   },
   {
     match: ["rx 9060 xt"],
@@ -105,10 +118,12 @@ const gpuAffiliateLinks = [
     match: ["rx 9070"],
     exclude: ["rx 9070 xt"],
     amazon: "https://amzn.to/3RSnbQl",
+    rakuten: "https://a.r10.to/hkxoJc",
   },
   {
     match: ["rx 9070 xt"],
     amazon: "https://amzn.to/3Q5xL69",
+    rakuten: "https://a.r10.to/h5xl0b",
   },
 ];
 
