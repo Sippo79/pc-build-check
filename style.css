@@ -56,14 +56,12 @@ html {
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--color-text);
+  color: #f5f7fb;
   background:
-    radial-gradient(circle at top left, var(--color-cyan-glow), transparent 34%),
-    radial-gradient(circle at bottom right, var(--color-purple-glow), transparent 34%),
-    var(--color-bg);
+    radial-gradient(circle at top left, rgba(25, 227, 255, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(123, 97, 255, 0.18), transparent 34%),
+    #090b14;
   overscroll-behavior-y: none;
-  padding-left: var(--safe-left);
-  padding-right: var(--safe-right);
 }
 
 button,

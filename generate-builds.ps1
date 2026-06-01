@@ -82,7 +82,7 @@ function Build-RelatedHtml($related) {
         $rs = Get-Slug $r
         $rRes = $resShort[$r.resolution]; $rU = $usageLabel[$r.usage]; $rBg = $budgetLabel[$r.budget.ToString()]
         $html += "
-          <a href=""/pc-build-check/builds/$rs.html"" class=""related-build-card"">
+          <a href=""$rs.html"" class=""related-build-card"">
             <div class=""related-build-meta"">$rRes · $rU · ${rBg}前後</div>
             <h3>$($r.title)</h3>
             <div class=""related-build-gpu"">$($r.gpu)</div>
@@ -99,7 +99,6 @@ function Build-Html($build, $allBuilds) {
     $gpuGuide  = "https://sippo79.github.io/gpu-guide/?gpu=$([Uri]::EscapeDataString($build.gpu))"
     $bgLabel   = $budgetLabel[$build.budget.ToString()]
     $resStr    = $resLabel[$build.resolution]
-    $resS      = $resShort[$build.resolution]
     $usageStr  = $usageLabel[$build.usage]
     $related   = Get-Related $build $allBuilds
     $relHtml   = Build-RelatedHtml $related
