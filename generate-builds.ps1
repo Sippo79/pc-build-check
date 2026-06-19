@@ -8,7 +8,17 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 $ErrorActionPreference = "Stop"
 
 $builds    = Get-Content -Raw -Path "./builds.json" -Encoding UTF8 | ConvertFrom-Json
-$SITE_BASE = "https://sippo79.github.io/pc-build-check"
+$SITE_BASE = "https://sippo-pc.jp/pc-build-check"
+
+# Sippo 親サイトへの導線（ヘッダー内リンク / ドメイン移行時はここだけ変更）
+$sippoHomeUrl = "https://sippo-pc.jp/"
+$sippoMascot  = "https://sippo-pc.jp/assets/sippo/sippo-normal.webp"
+$sippoHeaderLink = @"
+        <a class="sippo-nav" href="${sippoHomeUrl}#consult" target="_blank" rel="noopener noreferrer" aria-label="Sippo（シッポ）公式サイトへ｜PC選びの相談ハブ">
+          <img class="sippo-nav__icon" src="$sippoMascot" alt="" width="22" height="22" loading="lazy" decoding="async">
+          <span class="sippo-nav__text">Sippoに相談</span>
+        </a>
+"@
 
 $budgetLabel = @{ "100000"="10万円"; "150000"="15万円"; "200000"="20万円"; "250000"="25万円"; "300000"="30万円" }
 $budgetSlug  = @{ "100000"="10man";  "150000"="15man";  "200000"="20man";  "250000"="25man";  "300000"="30man"  }
@@ -91,17 +101,48 @@ function Build-RelatedHtml($related) {
     return $html
 }
 
+function Build-MotherboardGuideHtml($build) {
+    $guide = $build.motherboardGuide
+    if ($null -eq $guide) {
+        return @"
+
+      <section class="build-card build-motherboard-card">
+        <p class="section-label">Motherboard</p>
+        <h2>マザーボード目安</h2>
+        <p class="build-motherboard-fallback">CPUに対応したソケットの製品を選択してください。</p>
+        <p class="build-motherboard-note">※マザーボードはCPUソケット・チップセット・メモリ規格の互換性を確認してください。</p>
+      </section>
+"@
+    }
+
+    return @"
+
+      <section class="build-card build-motherboard-card">
+        <p class="section-label">Motherboard</p>
+        <h2>マザーボード目安</h2>
+        <dl class="build-motherboard-list">
+          <div><dt>ソケット</dt><dd>$($guide.socket)</dd></div>
+          <div><dt>チップセット</dt><dd>$($guide.chipset)</dd></div>
+          <div><dt>メモリ規格</dt><dd>$($guide.memoryType)</dd></div>
+          <div><dt>注意点</dt><dd>$($guide.note)</dd></div>
+        </dl>
+        <p class="build-motherboard-note">※マザーボードはCPUソケット・チップセット・メモリ規格の互換性を確認してください。同じチップセットでもDDR4版とDDR5版があるため、メモリ規格に注意してください。</p>
+      </section>
+"@
+}
+
 function Build-Html($build, $allBuilds) {
     $slug      = Get-Slug $build
     $seoTitle  = Get-SeoTitle $build
     $seoDesc   = Get-SeoDesc $build
     $canonical = "$SITE_BASE/builds/$slug.html"
-    $gpuGuide  = "https://sippo79.github.io/gpu-guide/?gpu=$([Uri]::EscapeDataString($build.gpu))"
+    $gpuGuide  = "https://sippo-pc.jp/gpu-guide/?gpu=$([Uri]::EscapeDataString($build.gpu))"
     $bgLabel   = $budgetLabel[$build.budget.ToString()]
     $resStr    = $resLabel[$build.resolution]
     $usageStr  = $usageLabel[$build.usage]
     $related   = Get-Related $build $allBuilds
     $relHtml   = Build-RelatedHtml $related
+    $motherboardHtml = Build-MotherboardGuideHtml $build
 
     $suitedHtml  = ($suitedFor[$build.usage]  | ForEach-Object { "          <li>$_</li>" }) -join "`n"
     $cautionHtml = ($cautions[$build.usage] | ForEach-Object { "          <li>$_</li>" }) -join "`n"
@@ -133,15 +174,17 @@ function Build-Html($build, $allBuilds) {
   <meta property="og:type" content="article" />
   <meta property="og:url" content="$canonical" />
   <meta property="og:image" content="$SITE_BASE/ogp.jpg" />
-  <meta property="og:site_name" content="PC BUILD CHECK" />
+  <meta property="og:site_name" content="ジサコ！" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="$seoTitle" />
   <meta name="twitter:description" content="$seoDesc" />
   <meta name="twitter:image" content="$SITE_BASE/ogp.jpg" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
-  <link rel="manifest" href="../site.webmanifest" />
-  <meta name="theme-color" content="#090b14" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../manifest.json" />
+  <meta name="theme-color" content="#0f172a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="preload" href="../style.css" as="style" />
@@ -155,6 +198,7 @@ function Build-Html($build, $allBuilds) {
     <div class="container header-inner">
       <a href="../index.html" class="site-logo">PC BUILD <span>CHECK</span></a>
       <nav class="header-nav">
+$sippoHeaderLink
         <a href="../index.html#diagnosis" class="header-link">診断する</a>
       </nav>
     </div>
@@ -199,6 +243,7 @@ function Build-Html($build, $allBuilds) {
         <h2>構成のポイント</h2>
         <p class="build-comment">$($build.comment)</p>
       </section>
+$motherboardHtml
 
       <section class="build-card">
         <p class="section-label">For You</p>
@@ -227,7 +272,7 @@ $cautionHtml
               <small>GPU GUIDEでスペック・比較を確認</small>
             </div>
           </a>
-          <a href="https://sippo79.github.io/game-pc-guide/" target="_blank" rel="noopener" class="build-next-btn">
+          <a href="https://sippo-pc.jp/game-pc-guide/" target="_blank" rel="noopener" class="build-next-btn">
             <span class="build-next-icon">🎮</span>
             <div class="build-next-text">
               <strong>ゲーム別おすすめPCを見る</strong>

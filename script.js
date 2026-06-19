@@ -354,7 +354,7 @@ function getResolutionLabel(resolution) {
 }
 
 function createGpuGuideUrl(gpu) {
-  return `https://sippo79.github.io/gpu-guide/?gpu=${encodeURIComponent(gpu)}`;
+  return `https://sippo-pc.jp/gpu-guide/?gpu=${encodeURIComponent(gpu)}`;
 }
 
 function renderFpsItems(fpsByGame) {
@@ -393,6 +393,49 @@ function getComfortMessage(usage, resolution) {
   return usageMap[resolution] || usageMap.fhd || null;
 }
 
+function renderMotherboardGuide(motherboardGuide) {
+  if (!motherboardGuide) {
+    return `
+      <section class="result-panel motherboard-guide">
+        <div class="result-panel-heading">
+          <p class="result-label">Motherboard</p>
+          <h4>マザーボード目安</h4>
+        </div>
+        <p class="motherboard-fallback">CPUに対応したソケットの製品を選択してください。</p>
+        <p class="motherboard-note">※マザーボードはCPUソケット・チップセット・メモリ規格の互換性を確認してください。</p>
+      </section>
+    `;
+  }
+
+  return `
+    <section class="result-panel motherboard-guide">
+      <div class="result-panel-heading">
+        <p class="result-label">Motherboard</p>
+        <h4>マザーボード目安</h4>
+      </div>
+      <dl class="motherboard-guide-list">
+        <div>
+          <dt>ソケット</dt>
+          <dd>${motherboardGuide.socket}</dd>
+        </div>
+        <div>
+          <dt>チップセット</dt>
+          <dd>${motherboardGuide.chipset}</dd>
+        </div>
+        <div>
+          <dt>メモリ規格</dt>
+          <dd>${motherboardGuide.memoryType}</dd>
+        </div>
+        <div>
+          <dt>注意点</dt>
+          <dd>${motherboardGuide.note}</dd>
+        </div>
+      </dl>
+      <p class="motherboard-note">※マザーボードはCPUソケット・チップセット・メモリ規格の互換性を確認してください。同じチップセットでもDDR4版とDDR5版があるため、メモリ規格に注意してください。</p>
+    </section>
+  `;
+}
+
 function renderNextActions(gpuGuideUrl) {
   return `
     <div class="next-action-section">
@@ -405,7 +448,7 @@ function renderNextActions(gpuGuideUrl) {
             <small>グラボの性能・比較情報</small>
           </span>
         </a>
-        <a class="next-action-btn" href="https://sippo79.github.io/game-pc-guide/" target="_blank" rel="noopener">
+        <a class="next-action-btn" href="https://sippo-pc.jp/game-pc-guide/" target="_blank" rel="noopener">
           <span class="next-action-icon">🎮</span>
           <span class="next-action-text">
             <strong>ゲーム別おすすめPCを見る</strong>
@@ -630,6 +673,8 @@ form.addEventListener("submit", async (e) => {
             ${renderCapabilityItems(performanceProfile.capabilities)}
           </ul>
         </section>
+
+        ${renderMotherboardGuide(result.motherboardGuide)}
 
         <a class="gpu-detail-button" href="${gpuGuideUrl}" target="_blank" rel="noopener">
           グラボの詳細スペックを見る →
